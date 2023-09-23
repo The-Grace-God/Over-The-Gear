@@ -3,6 +3,7 @@
 Project Starter: GSK Bladez
 
 ## Coding
+- SMUFED
 - [REDACTED]
 - Hersi
 - RealFD
@@ -13,6 +14,7 @@ Project Starter: GSK Bladez
 - Kuenaimaku
 
 ## Graphics
+- SMUFED
 - GSK Bladez
 - Neardayo
 - YellowBird
