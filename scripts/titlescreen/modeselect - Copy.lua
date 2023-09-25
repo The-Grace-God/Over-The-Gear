@@ -20,7 +20,7 @@ local type = "/idle"
 local resources = {
     images = {
         headerTitleImage = gfx.CreateSkinImage("titlescreen/title.png", 0),
-        selectorBgImage = gfx.CreateSkinImage("titlescreen/subtitle_menu_base.png", 0),
+        selectorBgImage = gfx.CreateSkinImage("titlescreen/selector_bg.png", 0),
         selectorArrowsImage = gfx.CreateSkinImage("titlescreen/selector_arrows.png", 0),
         unselectedButtonImage = gfx.CreateSkinImage("titlescreen/unselected_button.png", 0),
         selectedButtonBgImage = gfx.CreateSkinImage("titlescreen/selected_button_bg.png", 0),
@@ -46,28 +46,55 @@ for _, path in pairs(resources.audiosamples) do
     game.LoadSkinSample(path)
 end
 
-
 local buttons = {
     {
-        labelImage = gfx.CreateSkinImage("titlescreen/subtitle/labels/start.png", 0),
+        labelImage = gfx.CreateSkinImage("titlescreen/labels/skill.png", 0),
         labelWidth = 412,
         action = nil, -- Menu.Challenges,
         description = lang.Challanges.ch,
         details = lang.Challanges.ch1,
     },
 	{
-        labelImage = gfx.CreateSkinImage("titlescreen/subtitle/labels/card.png", 0),
+        labelImage = gfx.CreateSkinImage("titlescreen/labels/normal-2.png", 0),
         labelWidth = 384,
         action = nil, -- Menu.Start,
         description = lang.Start.st,
         details = lang.Start.st2,
     },
 	{
-        labelImage = gfx.CreateSkinImage("titlescreen/subtitle/labels/crew.png", 0),
+        labelImage = gfx.CreateSkinImage("titlescreen/labels/normal.png", 0),
         labelWidth = 210,
         action = nil, -- Menu.Start,
         description = lang.Start.st,
         details = lang.Start.st2,
+    },
+    {
+        labelImage = gfx.CreateSkinImage("titlescreen/labels/friend.png", 0),
+        labelWidth = 169,
+        action = nil, -- Menu.Multiplayer,
+        description = lang.Multiplayer.mp,
+        details = lang.Multiplayer.mp2,
+    },
+	{
+        labelImage = gfx.CreateSkinImage("titlescreen/labels/settings.png", 0),
+        labelWidth = 420,
+        action = nil, -- Menu.Settings,
+        description = lang.Settings.se,
+        details = lang.Settings.se1,
+    },
+    {
+        labelImage = gfx.CreateSkinImage("titlescreen/labels/nautica.png", 0),
+        labelWidth = 370,
+        action = nil, -- Menu.DLScreen,
+        description = lang.Nautica.dls,
+        details = lang.Nautica.dls2,
+    },
+    {
+        labelImage = gfx.CreateSkinImage("titlescreen/labels/exit.png", 0),
+        labelWidth = 225,
+        action = nil, -- Menu.Exit,
+        description = lang.Exit.ex,
+        details = lang.Exit.ex2,
     },
 }
 
@@ -127,10 +154,24 @@ local playedBgm = false
 
 local triggerServiceMenu = false
 
+local function subtitle()
+    if (triggerSubMenu) then
+        triggerSubMenu = false
+        return {
+            eventType = 'switch',
+            toScreen = 'submenu'
+        }
+    end
+end
+
 local function setButtonActions()
-    buttons[1].action = Menu.Start
-    buttons[2].action = Menu.Start
-    buttons[3].action = Menu.Start
+    buttons[1].action = Menu.Challenges
+    buttons[2].action = Menu.Multiplayer
+    buttons[3].action = subtitle()
+    buttons[4].action = Menu.DLScreen
+    buttons[5].action = Menu.Settings
+    buttons[6].action = Menu.Exit
+	buttons[7].action = Menu.Exit
 end
 
 local function draw_button(button, x, y, selected, index)
@@ -201,9 +242,13 @@ end
 
 local function draw_buttons()
     local indexes = {
+        getCorrectedButtonIndex(cursorIndex, -2),
         getCorrectedButtonIndex(cursorIndex, -1),
         cursorIndex,
         getCorrectedButtonIndex(cursorIndex, 1),
+        getCorrectedButtonIndex(cursorIndex, 2),
+		getCorrectedButtonIndex(cursorIndex, 3),
+		getCorrectedButtonIndex(cursorIndex, 4),
     }
 
     local yBase = Dim.design.height / 2	+ SELECTOR_BAR_OFFSET_FROM_CENTER
@@ -226,6 +271,11 @@ local function draw_buttons()
     else
         draw_button(buttons[indexes[3]], Dim.design.width - 512, centerButtonY, false, 3) -- Placeholder for transition that goes to the top
     end
+
+    draw_button(buttons[indexes[4]], Dim.design.width - 512, yBase + marginFromDesHCenter + 10, false, 4)
+    draw_button(buttons[indexes[5]], Dim.design.width - 512, yBase + marginFromDesHCenter + buttonHeight + 10, false, 5)
+	draw_button(buttons[indexes[6]], Dim.design.width - 512, yBase + marginFromDesHCenter + buttonHeight + 155, false, 6)
+	draw_button(buttons[indexes[7]], Dim.design.width - 512, yBase + marginFromDesHCenter + buttonHeight + 305, false, 7)
 
 end
 
@@ -289,7 +339,7 @@ local function draw_titlescreen(deltaTime)
 
     -- Draw selector background
     gfx.BeginPath()
-    gfx.ImageRect(0, (Dim.design.height / 2 + SELECTOR_BAR_OFFSET_FROM_CENTER) - 300 / 1, 1079, 620, resources.images.selectorBgImage, 1,
+    gfx.ImageRect(0, (Dim.design.height / 2 + SELECTOR_BAR_OFFSET_FROM_CENTER) - 280 / 2, 1079, 280, resources.images.selectorBgImage, 1,
         0)
 
     buttonY = (Dim.design.height / 2) - 2 * (257 + 5)

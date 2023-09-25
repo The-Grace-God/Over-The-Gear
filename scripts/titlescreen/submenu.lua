@@ -19,12 +19,12 @@ local type = "/idle"
 
 local resources = {
     images = {
-        headerTitleImage = gfx.CreateSkinImage("titlescreen/title.png", 0),
-        selectorBgImage = gfx.CreateSkinImage("titlescreen/subtitle_menu_base.png", 0),
-        selectorArrowsImage = gfx.CreateSkinImage("titlescreen/selector_arrows.png", 0),
-        unselectedButtonImage = gfx.CreateSkinImage("titlescreen/unselected_button.png", 0),
-        selectedButtonBgImage = gfx.CreateSkinImage("titlescreen/selected_button_bg.png", 0),
-        selectedButtonOverImage = gfx.CreateSkinImage("titlescreen/selected_button_over.png", 0)
+        headerTitleImage = gfx.CreateSkinImage("titlescreen/subtitle/subtitle_nav_menu.png", 0),
+        selectorBgImage = gfx.CreateSkinImage("titlescreen/subtitle/subtitle_menu_base.png", 0),
+        selectorArrowsImage = gfx.CreateSkinImage("titlescreen/subtitle/subtitle_menubase.png", 0),
+        unselectedButtonImage = gfx.CreateSkinImage("titlescreen/subtitle/panel_bg.ng", 0),
+        selectedButtonBgImage = gfx.CreateSkinImage("titlescreen/subtitle/subtitle_nav_menu.png", 0),
+        selectedButtonOverImage = gfx.CreateSkinImage("titlescreen/subtitle/selected_panel.png", 0)
     },
     anims = {
         idolAnimation = gfx.LoadSkinAnimation("crew/anim/"..crew..type, 1 / 30, 0, true),
@@ -45,7 +45,6 @@ local resources = {
 for _, path in pairs(resources.audiosamples) do
     game.LoadSkinSample(path)
 end
-
 
 local buttons = {
     {
@@ -128,8 +127,14 @@ local playedBgm = false
 local triggerServiceMenu = false
 
 local function setButtonActions()
-    buttons[1].action = Menu.Start
-    buttons[2].action = Menu.Start
+    buttons[1].action = return {
+            eventType = 'switch',
+            toScreen = 'submenu'
+        }
+    buttons[2].action = return {
+            eventType = 'switch',
+            toScreen = 'submenu'
+        }
     buttons[3].action = Menu.Start
 end
 
@@ -289,7 +294,7 @@ local function draw_titlescreen(deltaTime)
 
     -- Draw selector background
     gfx.BeginPath()
-    gfx.ImageRect(0, (Dim.design.height / 2 + SELECTOR_BAR_OFFSET_FROM_CENTER) - 300 / 1, 1079, 620, resources.images.selectorBgImage, 1,
+    gfx.ImageRect(0, (Dim.design.height / 2 + SELECTOR_BAR_OFFSET_FROM_CENTER) - 280 / 2, 1079, 280, resources.images.selectorBgImage, 1,
         0)
 
     buttonY = (Dim.design.height / 2) - 2 * (257 + 5)

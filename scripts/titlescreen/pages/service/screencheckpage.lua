@@ -1,7 +1,7 @@
 require("common.class")
 local Dim = require("common.dimensions")
 local ServicePage = require("titlescreen.pages.service.servicepage")
-
+local triggerSecretSelect = false
 ---@class ScreenCheckPage: ServicePage
 local ScreenCheckPage = {
     __tostring = function() return "ScreenCheckPage" end,
@@ -34,6 +34,14 @@ end
 ---@param button integer # options are under the `game` table prefixed with `BUTTON`
 function ScreenCheckPage:handleButtonInput(button)
     if button == game.BUTTON_BCK or button == game.BUTTON_STA then
+        if self.viewHandler then
+            self.viewHandler:back()
+        end
+    end
+end
+
+function ScreenCheckPage:handleButtonInput(button)
+    if button == game.BUTTON_BTA and button == game.BUTTON_BTD then
         if self.viewHandler then
             self.viewHandler:back()
         end
