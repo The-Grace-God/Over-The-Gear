@@ -5,6 +5,19 @@ Project Starter: GSK Bladez
 
 ## Coding
 - SMUFED
+
+# Textures
+- Vxnish
+
+# Testing
+- PajamaSLAM
+- SMUFED
+- AAquatek/AAquatrax
+
+# Original Theme Credits (Expiremental Gear)
+https://git.hersi.changeip.net/hersi/ExperimentalGear
+
+## Coding
 - [REDACTED]
 - Hersi
 - RealFD
@@ -15,7 +28,6 @@ Project Starter: GSK Bladez
 - Kuenaimaku
 
 ## Graphics
-- SMUFED
 - GSK Bladez
 - Neardayo
 - YellowBird
@@ -37,5 +49,6 @@ Project Starter: GSK Bladez
 - Dengikiko
 - Adamyes
 - Gio
+- Mattadome
 - Mattadome
 
