@@ -16,6 +16,7 @@ Project Starter: GSK Bladez
 
 ## Graphics
 - SMUFED
+- Vxnish
 - GSK Bladez
 - Neardayo
 - YellowBird
@@ -30,6 +31,11 @@ Project Starter: GSK Bladez
 - Neardayo
 - DDX
 - GM*DEO
+
+## Testing
+- SMUFED
+- PajamaSLAM
+- AAquatek
 
 ## Beta Testing
 - Gam
