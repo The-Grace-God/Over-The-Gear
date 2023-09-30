@@ -36,8 +36,6 @@ Project Starter: GSK Bladez
 - SMUFED
 - PajamaSLAM
 - AAquatek
-
-## Beta Testing
 - Gam
 - TealStar
 - Dengikiko
