@@ -16,7 +16,7 @@ Project Starter: SMUFED
 
 # Original Theme Credits (Expiremental Gear)
 https://git.hersi.changeip.net/hersi/ExperimentalGear
-Project Starter: GSK Bladez
+- Project Starter: GSK Bladez
 
 ## Coding
 - [REDACTED]
