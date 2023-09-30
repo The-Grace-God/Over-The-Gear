@@ -1,0 +1,7 @@
+# generated skin files
+nautica.json
+skin.cfg
+
+# any crew that's not the default one, we do not package crew
+
+README.md
