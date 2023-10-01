@@ -2,13 +2,15 @@ local Common = require("common.util")
 local Dim = require("common.dimensions")
 local Wallpaper = require("components.wallpaper")
 local Easing = require("common.easing")
+local logos = game.GetSkinSetting("logos")
+local type = ".png"
 
 local splash1BgColor = {0, 0, 0}
 local splash1Logo = gfx.CreateSkinImage("titlescreen/splash/copywrong.png", 0)
 local splash1LogoWidth, splash1LogoHeight = gfx.ImageSize(splash1Logo)
 
-local splash2BgColor = {182, 0, 20}
-local splash2Logo = gfx.CreateSkinImage("titlescreen/splash/konami.png", 0)
+local splash2BgColor = {255, 255, 255}
+local splash2Logo = gfx.CreateSkinImage("titlescreen/splash/"..logos..type, 0)
 local splash2LogoWidth, splash2LogoHeight = gfx.ImageSize(splash2Logo)
 
 local splash3BgColor = {255, 255, 255}

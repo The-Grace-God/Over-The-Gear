@@ -35,7 +35,7 @@
 	"single_idol": {
 		"label": "!!!ALWAYS MATCH THE NAME!!!",
 		"type": "text",
-		"default": "nothing"
+		"default": "grace"
 	},
 	"beta_idol": {
 		"label": "Toggle between Old and New Idol Mode",
@@ -78,6 +78,14 @@
 
 	"separator_g": {},
 	"Gameplay": { "type": "label" },
+	
+	"separator_h": {},
+	"logos":{
+		"type": "selection",
+		"label": "Logo",
+		"default": "KONAMI",
+		"values": ["KONAMI", "KONAMI White", "KONAMI 50th Anaversary"]
+	},
 
 	"gameplay_ucDifferentColor": {
 		"label": "Use different colors for UC and PUC chain numbers",
@@ -112,7 +120,7 @@
 		"values": ["ALL", "CRITICAL (or worse)", "NEAR (or worse)", "NONE"]
 	},
 
-	"separator_h": {},
+	"separator_i": {},
 	"Debug": { "type": "label" },
 
 	"debug_showInformation": {
