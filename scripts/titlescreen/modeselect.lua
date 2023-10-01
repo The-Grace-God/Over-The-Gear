@@ -141,6 +141,18 @@ local miscButtons = {
         w = 1026 / 2,
         h = 257 / 2
     },
+	downButton3 = {
+        x = Dim.design.width - 512,
+        y = Dim.design.height / 2 + SELECTOR_BAR_OFFSET_FROM_CENTER + 128 + buttonHeight + 10,
+        w = 1026 / 2,
+        h = 257 / 2
+    },
+	downButton4 = {
+        x = Dim.design.width - 512,
+        y = Dim.design.height / 2 + SELECTOR_BAR_OFFSET_FROM_CENTER + 128 + buttonHeight + 10,
+        w = 1026 / 2,
+        h = 257 / 2
+    },
 }
 
 local scrollTransitionScale = 1 -- Goes from 0 to 1 when transition is happening, sits at 1 when it's not.
@@ -156,11 +168,12 @@ local triggerServiceMenu = false
 
 local function setButtonActions()
     buttons[1].action = Menu.Challenges
-    buttons[2].action = Menu.Multiplayer
+    buttons[2].action = Menu.Start
     buttons[3].action = Menu.Start
-    buttons[4].action = Menu.DLScreen
+    buttons[4].action = Menu.Multiplayer
     buttons[5].action = Menu.Settings
-    buttons[6].action = Menu.Exit
+    buttons[6].action = Menu.DLScreen
+	buttons[7].action = Menu.Exit
 end
 
 local function draw_button(button, x, y, selected, index)

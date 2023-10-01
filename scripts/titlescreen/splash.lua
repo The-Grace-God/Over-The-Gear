@@ -3,6 +3,7 @@ local Dim = require("common.dimensions")
 local Wallpaper = require("components.wallpaper")
 local Easing = require("common.easing")
 local logos = game.GetSkinSetting("logos")
+local sute = game.GetSkinSetting("Kona")
 local type = ".png"
 
 local splash1BgColor = {0, 0, 0}
@@ -20,6 +21,10 @@ local splash3LogoWidth, splash3LogoHeight = gfx.ImageSize(splash3Logo)
 local splash4BgColor = {255, 255, 255}
 local splash4Logo = gfx.CreateSkinImage("titlescreen/splash/e-amusement.png", 0)
 local splash4LogoWidth, splash4LogoHeight = gfx.ImageSize(splash4Logo)
+
+local splash4sBgColor = {255, 255, 255}
+local splash4sLogo = gfx.CreateSkinImage("titlescreen/splash/konasta.png", 0)
+local splash4sLogoWidth, splash4sLogoHeight = gfx.ImageSize(splash4sLogo)
 
 local splash5BgColor = {255, 255, 255}
 local splash5Logo = gfx.CreateSkinImage("titlescreen/splash/RSA.png", 0)
@@ -50,6 +55,7 @@ local splash1Duration = 3.10
 local splash2Duration = 3.10
 local splash3Duration = 3.10
 local splash4Duration = 3.10
+local splash4sDuration = 3.10
 local splash5Duration = 3.10
 local splash6Duration = 3.10
 local splash7Duration = 3.10
@@ -233,14 +239,57 @@ local function splash4(deltaTime)
 
     gfx.Text("", 10, Dim.design.height - 10)
 
+	if sute == (true) then
+		if (splashTimer < 0) then
+			splashState = "splash4s"
+			splashTimer = 0
+			return
+		end
+	else 
+		if (splashTimer < 0) then
+			splashState = "splash5"
+			splashTimer = 0
+			return
+		end
+	end
+    if splashTimer == 0 then
+        splashTimer = splash4Duration
+    end
+
+    splashTimer = splashTimer - deltaTime
+end
+
+local function splash4s(deltaTime)
+    local splash4sLogoXOffset = (Dim.design.width - splash4sLogoWidth) / 2
+    local splash4sLogoYOffset = (Dim.design.height - splash4sLogoHeight) / 2
+
+    calcFade(splash4sDuration)
+
+    gfx.BeginPath()
+    gfx.Rect(0, 0, Dim.design.width, Dim.design.height)
+    gfx.FillColor(splash4sBgColor[1], splash4sBgColor[2], splash4sBgColor[3], fadeAlpha)
+    gfx.Fill()
+
+    gfx.BeginPath()
+    gfx.ImageRect(splash4sLogoXOffset, splash4sLogoYOffset, splash4sLogoWidth, splash4sLogoHeight, splash4sLogo, fadeAlpha / 255, 0)
+
+    gfx.BeginPath()
+    gfx.LoadSkinFont("segoeui.ttf")
+    gfx.FillColor(0, 0, 0, fadeAlpha)
+    gfx.TextAlign(gfx.TEXT_ALIGN_LEFT + gfx.TEXT_ALIGN_BOTTOM)
+    gfx.FontSize(28)
+
+    gfx.Text("", 10, Dim.design.height - 10)
+
     if (splashTimer < 0) then
         splashState = "splash5"
         splashTimer = 0
         return
     end
 
+
     if splashTimer == 0 then
-        splashTimer = splash4Duration
+        splashTimer = splash4sDuration
     end
 
     splashTimer = splashTimer - deltaTime
@@ -454,6 +503,8 @@ function render(deltaTime)
         splash3(deltaTime)
 	elseif splashState == "splash4" then
         splash4(deltaTime)
+	elseif splashState == "splash4s" then
+        splash4s(deltaTime)
     elseif splashState == "splash5" then
         splash5(deltaTime)
     elseif splashState == "splash6" then

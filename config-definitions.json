@@ -86,7 +86,13 @@
 		"default": "KONAMI",
 		"values": ["KONAMI", "KONAMI White", "KONAMI 50th Anaversary"]
 	},
-
+	"separator_i": {},
+	"Kona": {
+		"label": "Konasute splash after eAmusement",
+		"type": "bool",
+		"default": false
+	},
+		
 	"gameplay_ucDifferentColor": {
 		"label": "Use different colors for UC and PUC chain numbers",
 		"type": "bool",
@@ -120,7 +126,7 @@
 		"values": ["ALL", "CRITICAL (or worse)", "NEAR (or worse)", "NONE"]
 	},
 
-	"separator_i": {},
+	"separator_j": {},
 	"Debug": { "type": "label" },
 
 	"debug_showInformation": {
