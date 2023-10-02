@@ -7,7 +7,7 @@ Project Starter: SMUFED
 - SMUFED
 
 # Textures
-- Vxnish
+- SMUFED
 
 # Testing
 - PajamaSLAM
