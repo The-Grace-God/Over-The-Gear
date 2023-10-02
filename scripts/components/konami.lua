@@ -19,9 +19,9 @@ elseif logos == "KONAMI White" then
 	
 	end
 	return konami
+end
 
 
 
 
-<eof> end
-<eof> return konamis
+return konamis

@@ -53,20 +53,20 @@ local fadeAlpha = 0
 local splashInitDuration = 1
 local splash1Duration = 3.10
 local splash2Duration = 3.10
-local splash3Duration = 3.10
-local splash4Duration = 3.10
-local splash4sDuration = 3.10
-local splash5Duration = 3.10
-local splash6Duration = 3.10
-local splash7Duration = 3.10
-local splash8Duration = 3.10
-local splash9Duration = 3.10
+local splash3Duration = 2.5
+local splash4Duration = 2.5
+local splash4sDuration = 2.5
+local splash5Duration = 2.5
+local splash6Duration = 2.5
+local splash7Duration = 2.5
+local splash8Duration = 2.5
+local splash9Duration = 2.5
 
 
 game.LoadSkinSample("titlescreen/splash/splash1.wav")
 game.LoadSkinSample("titlescreen/splash/swoosh.wav")
-local splash2SfxPlayed = false
-local SwooshSfxPlayed = false
+local require splash2SfxPlayed = false
+local require SwooshSfxPlayed = false
 local triggerSkip = false
 
 local function calcFade(splashDuration)
@@ -130,6 +130,7 @@ local function splash1(deltaTime)
 	if not SwooshSfxPlayed then
         game.PlaySample("titlescreen/splash/swoosh.wav")
         SwooshSfxPlayed = true
+		splash2SfxPlayed = false
     end
 
     splashTimer = splashTimer - deltaTime
@@ -170,6 +171,7 @@ local function splash2(deltaTime)
 	if not splash2SfxPlayed then
         game.PlaySample("titlescreen/splash/splash1.wav")
         splash2SfxPlayed = true
+		SwooshSfxPlayed = false
     end
 
     splashTimer = splashTimer - deltaTime
